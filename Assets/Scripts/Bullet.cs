@@ -25,6 +25,11 @@ public class Bullet : MonoBehaviour
             SoundManager.PlaySound(SoundType.PLAYERATTACK);
             Destroy(gameObject);
         }
+
+        if (other.CompareTag("Bound"))
+        {
+            Destroy(gameObject);
+        }
     }
-    
+
 }

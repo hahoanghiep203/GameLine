@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6029819166176297204}
   - component: {fileID: 2478630155396333898}
   m_Layer: 0
-  m_Name: HouseYellow
+  m_Name: CoinMine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 591660067245078366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1262, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -1350212669396681702, guid: f24cfd7092d670148b1685e4c07f32b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ba62883719430248bc5041e5014634d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,17 +124,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.22809404}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.75, y: 3.75}
+    oldSize: {x: 4.8, y: 3.2}
     newSize: {x: 2.03125, y: 2.40625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.03125, y: 2.8624382}
+  m_Size: {x: 2.03125, y: 2.40625}
   m_EdgeRadius: 0
 --- !u!114 &6029819166176297204
 MonoBehaviour:
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  price: 5
 --- !u!114 &2478630155396333898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,4 +163,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinObject: {fileID: 5814195576289538041, guid: 5b9402afd24c3044f8207413a8cd5c16, type: 3}
-  coolDown: 10
+  coolDown: 4

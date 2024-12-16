@@ -11,12 +11,6 @@ public class GameManager : MonoBehaviour
     public int coins;
     public TextMeshProUGUI coinText;
 
-    public void BuyPlayer(GameObject player, Sprite sprite)
-    {
-        Debug.Log("BuyPlayer called");
-        currentPlayer = player;
-        currentPlayerSprite = sprite;
-    }
 
     private void Update()
     {
@@ -64,6 +58,46 @@ public class GameManager : MonoBehaviour
                 tileComponent.ResetTile(); // Reset tile
             }
         }
+
+        // Kiểm tra nhấn chuột phải để bán player
+        if (hit.collider && Input.GetMouseButtonDown(1)) // Chuột phải
+        {
+            Tile tile = hit.collider.GetComponent<Tile>();
+            if (tile != null && tile.hasPlayer)
+            {
+                SellPlayer(tile);
+            }
+        }
+    }
+
+    public void BuyPlayer(GameObject player, Sprite sprite)
+    {
+        Debug.Log("BuyPlayer called");
+        currentPlayer = player;
+        currentPlayerSprite = sprite;
+    }
+
+    public void SellPlayer(Tile tile)
+    {
+        if (tile.currentPlayer != null)
+        {
+            Player player = tile.currentPlayer.GetComponent<Player>();
+            if (player != null)
+            {
+                int sellPrice = player.price;
+                coins += sellPrice;
+                Destroy(tile.currentPlayer);
+                tile.ResetTile(); // Reset tile
+                Debug.Log("Player sold for: $" + sellPrice);
+            }
+            else
+            {
+                Debug.LogError("Không tìm thấy component PlayerSlot trên currentPlayer.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Không có player nào để bán trên tile này.");
+        }
     }
 }
-

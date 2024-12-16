@@ -37,7 +37,7 @@ public class PlayerSlot : MonoBehaviour
         {
             icon.enabled = true;
             icon.sprite = playerSprite;
-            priceText.text = price.ToString();
+            priceText.text = "$" + price.ToString();
         }
         else
         {

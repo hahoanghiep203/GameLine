@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int health;
+    public int price;
 
     private void Start()
     {

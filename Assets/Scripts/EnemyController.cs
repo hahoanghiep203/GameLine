@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 
 public class EnemyController : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class EnemyController : MonoBehaviour
         eatCoolDown = type.eatCoolDown;
 
         GetComponent<SpriteRenderer>().sprite = type.sprite;
+
     }
 
     private void Update()
