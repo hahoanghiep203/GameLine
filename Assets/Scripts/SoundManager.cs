@@ -5,7 +5,8 @@ public enum SoundType
 {
     PLAYERATTACK,
     PLAYERHURT,
-    SELECT
+    SELECT,
+    ENEMYATTACK
 }
 
 [RequireComponent(typeof(AudioSource))]

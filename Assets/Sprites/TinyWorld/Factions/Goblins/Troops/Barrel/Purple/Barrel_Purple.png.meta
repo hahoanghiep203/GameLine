@@ -597,35 +597,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrel_Purple_18
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 87
-        width: 10
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5ec8c18e70bb41bb0800000000000000
-      internalID: -4966138846449464091
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Barrel_Purple_19
       rect:
         serializedVersion: 2
-        x: 168
+        x: 163
         y: 28
-        width: 48
-        height: 75
+        width: 59
+        height: 81
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -641,34 +619,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrel_Purple_20
-      rect:
-        serializedVersion: 2
-        x: 184
-        y: 103
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9ff7a09c2846aba50800000000000000
-      internalID: 6537648321963130873
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Barrel_Purple_21
       rect:
         serializedVersion: 2
-        x: 294
+        x: 290
         y: 28
-        width: 52
+        width: 59
         height: 81
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -680,72 +636,6 @@ TextureImporter:
       bones: []
       spriteID: 81a6873fda03f9ad0800000000000000
       internalID: -2693380528472036840
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Barrel_Purple_22
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 85
-        width: 8
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5d2c9aac01efda530800000000000000
-      internalID: 3868027003054179029
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Barrel_Purple_23
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 80
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1240439cdeec0b020800000000000000
-      internalID: 2355610125792969761
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Barrel_Purple_24
-      rect:
-        serializedVersion: 2
-        x: 332
-        y: 96
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 961a19dd54b568aa0800000000000000
-      internalID: -6159135084754394775
       vertices: []
       indices: 
       edges: []

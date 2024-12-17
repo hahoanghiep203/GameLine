@@ -15,6 +15,8 @@ public class EnemyController : MonoBehaviour
     public LayerMask playerMask;
     public Player targetPlayer;
     private bool canEat = true;
+    public Animator anim;
+    private Coroutine attackSoundCoroutine;
 
     private void Start()
     {
@@ -25,7 +27,7 @@ public class EnemyController : MonoBehaviour
         eatCoolDown = type.eatCoolDown;
 
         GetComponent<SpriteRenderer>().sprite = type.sprite;
-
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -75,7 +77,8 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            anim.SetTrigger("isDie");
+            StartCoroutine(DestroyCoroutine());
         }
     }
 
@@ -91,5 +94,57 @@ public class EnemyController : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = Color.white;
         speed = type.speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            targetPlayer = other.GetComponent<Player>();
+            // Bắt đầu phát âm thanh tấn công liên tục
+            attackSoundCoroutine = StartCoroutine(PlayAttackSound());
+            Attack();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            UnAttack();
+            CancelInvoke("ResetEatCoolDown");
+            canEat = true;
+
+            if (attackSoundCoroutine != null)
+            {
+                StopCoroutine(attackSoundCoroutine);
+                attackSoundCoroutine = null;
+            }
+        }
+    }
+
+    private IEnumerator PlayAttackSound()
+    {
+        while (true) // Lặp vô hạn cho đến khi dừng
+        {
+            SoundManager.PlaySound(SoundType.ENEMYATTACK);
+            yield return new WaitForSeconds(0.7f); // Thay đổi thời gian chờ tùy theo nhu cầu
+        }
+    }
+
+    private IEnumerator DestroyCoroutine()
+    {
+        yield return new WaitForSeconds(0.9f);
+        Destroy(gameObject);
+    }
+
+    private void Attack()
+    {
+        anim.SetBool("isAttacking", true);
+    }
+
+    private void UnAttack()
+    {
+        anim.SetBool("isAttacking", false);
     }
 }

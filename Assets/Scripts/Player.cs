@@ -12,8 +12,8 @@ public class Player : MonoBehaviour
 
     public void Hit(int damage)
     {
-        SoundManager.PlaySound(SoundType.PLAYERHURT);
         health -= damage;
+
         if (health <= 0)
         {
             Destroy(gameObject);

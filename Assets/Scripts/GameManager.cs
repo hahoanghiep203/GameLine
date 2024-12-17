@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
         // Kiểm tra nhấn chuột phải để bán player
         if (hit.collider && Input.GetMouseButtonDown(1)) // Chuột phải
         {
+            SoundManager.PlaySound(SoundType.SELECT);
             Tile tile = hit.collider.GetComponent<Tile>();
             if (tile != null && tile.hasPlayer)
             {
