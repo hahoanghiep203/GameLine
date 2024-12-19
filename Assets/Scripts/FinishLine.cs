@@ -21,6 +21,7 @@ public class FinishLine : MonoBehaviour
         {
             isGameOver = true;
             gameOverPanel.SetActive(true);
+            SoundManager.PlaySound(SoundType.GAMEOVER);
             Time.timeScale = 0;
         }
     }

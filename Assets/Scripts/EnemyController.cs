@@ -75,6 +75,8 @@ public class EnemyController : MonoBehaviour
             Freeze();
         }
 
+        StartCoroutine(BlinkEffect());
+
         if (health <= 0)
         {
             anim.SetTrigger("isDie");
@@ -101,7 +103,6 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             targetPlayer = other.GetComponent<Player>();
-            // Bắt đầu phát âm thanh tấn công liên tục
             attackSoundCoroutine = StartCoroutine(PlayAttackSound());
             Attack();
         }
@@ -136,6 +137,23 @@ public class EnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.9f);
         Destroy(gameObject);
+    }
+
+    private IEnumerator BlinkEffect()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        Color originalColor = spriteRenderer.color;
+        Color hitColor = Color.red; // Color to indicate hit
+        float blinkDuration = 0.07f; // Duration for each blink
+        int blinkCount = 1; // Number of blinks
+
+        for (int i = 0; i < blinkCount; i++)
+        {
+            spriteRenderer.color = hitColor; // Change to hit color
+            yield return new WaitForSeconds(blinkDuration);
+            spriteRenderer.color = originalColor; // Change back to original color
+            yield return new WaitForSeconds(blinkDuration);
+        }
     }
 
     private void Attack()

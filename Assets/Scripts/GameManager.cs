@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI; // Thêm namespace này để sử dụng Button
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
     public LayerMask coinMask;
     public int coins;
     public TextMeshProUGUI coinText;
-
+    public Button buyButton; // Thêm biến để tham chiếu đến nút mua
 
     private void Update()
     {
@@ -73,7 +74,6 @@ public class GameManager : MonoBehaviour
 
     public void BuyPlayer(GameObject player, Sprite sprite)
     {
-        Debug.Log("BuyPlayer called");
         currentPlayer = player;
         currentPlayerSprite = sprite;
     }
@@ -89,16 +89,7 @@ public class GameManager : MonoBehaviour
                 coins += sellPrice;
                 Destroy(tile.currentPlayer);
                 tile.ResetTile(); // Reset tile
-                Debug.Log("Player sold for: $" + sellPrice);
             }
-            else
-            {
-                Debug.LogError("Không tìm thấy component PlayerSlot trên currentPlayer.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Không có player nào để bán trên tile này.");
         }
     }
 }
