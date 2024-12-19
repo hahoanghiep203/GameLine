@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        coinText.text = "Coins: $" + coins.ToString();
+        coinText.text = coins.ToString() + "$";
 
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, tileMask);
 
