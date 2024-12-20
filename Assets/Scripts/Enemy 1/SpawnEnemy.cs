@@ -46,7 +46,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("SpawnEnemy", 2, 10);
+        InvokeRepeating("SpawnEnemy", 5, 10);
 
         foreach (EnemyPrefabProb prefabProb in enemyPrefabs)
         {
