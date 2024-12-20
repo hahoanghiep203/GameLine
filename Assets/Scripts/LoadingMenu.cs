@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameLoadingScreenManager : MonoBehaviour
+public class LoadingMenu : MonoBehaviour
 {
     public GameObject loadingScreen;
     public Slider slider;
@@ -13,7 +13,8 @@ public class GameLoadingScreenManager : MonoBehaviour
     void Start()
     {
         loadingScreen.SetActive(true);
-        StartCoroutine(LoadSceneAsynchronously(1)); // Thay 1 bằng chỉ số cảnh bạn muốn tải
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1; // Lấy chỉ số cảnh tiếp theo
+        StartCoroutine(LoadSceneAsynchronously(nextSceneIndex));
     }
 
     IEnumerator LoadSceneAsynchronously(int levelIndex)
@@ -21,10 +22,11 @@ public class GameLoadingScreenManager : MonoBehaviour
         AsyncOperation operation = SceneManager.LoadSceneAsync(levelIndex);
         operation.allowSceneActivation = false;
 
-        float simulatedProgress = 0f;
+        float simulatedProgress = 0;
 
         while (!operation.isDone)
         {
+
             // Tính toán tiến trình thực tế
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             simulatedProgress = Mathf.MoveTowards(simulatedProgress, progress, Time.deltaTime);
