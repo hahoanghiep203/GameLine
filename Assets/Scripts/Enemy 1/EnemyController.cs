@@ -79,9 +79,11 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             anim.SetTrigger("isDie");
+            ScoreManager.Instance.AddScore(type.score); // Cập nhật điểm số
             StartCoroutine(DestroyCoroutine());
         }
     }
+
 
     void Freeze()
     {
