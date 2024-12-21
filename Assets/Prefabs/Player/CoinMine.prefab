@@ -164,7 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinObject: {fileID: 5814195576289538041, guid: 5b9402afd24c3044f8207413a8cd5c16, type: 3}
-  coolDown: 4
+  coolDown: 5
+  timer: {fileID: 0}
 --- !u!50 &2408398892768394459
 Rigidbody2D:
   serializedVersion: 5

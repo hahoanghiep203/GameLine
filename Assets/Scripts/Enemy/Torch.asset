@@ -19,3 +19,4 @@ MonoBehaviour:
   eatCoolDown: 1
   sprite: {fileID: -8884292802392011540, guid: 3362d4987e5b7f14dbfa73db088be21b, type: 3}
   deathSprite: {fileID: -5376117467778600094, guid: 3362d4987e5b7f14dbfa73db088be21b, type: 3}
+  score: 1

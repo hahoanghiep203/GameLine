@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour
 {
@@ -17,6 +16,9 @@ public class EnemyController : MonoBehaviour
     public Animator anim;
     private Coroutine attackSoundCoroutine;
 
+    // Reference to Timer script
+    public Timer timer;
+
     private void Start()
     {
         health = type.health;
@@ -27,6 +29,12 @@ public class EnemyController : MonoBehaviour
 
         GetComponent<SpriteRenderer>().sprite = type.sprite;
         anim = GetComponent<Animator>();
+
+        // Find Timer script if not assigned in the Inspector
+        if (timer == null)
+        {
+            timer = FindObjectOfType<Timer>();
+        }
     }
 
     private void Update()
@@ -63,7 +71,14 @@ public class EnemyController : MonoBehaviour
     private void FixedUpdate()
     {
         if (!targetPlayer)
-            transform.position -= new Vector3(0, speed, 0);
+        {
+            float adjustedSpeed = speed;
+            if (timer != null)
+            {
+                adjustedSpeed *= timer.speedManage;
+            }
+            transform.position -= new Vector3(0, adjustedSpeed, 0);
+        }
     }
 
     public void Hit(int damage, bool freeze)
@@ -79,11 +94,10 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             anim.SetTrigger("isDie");
-            ScoreManager.Instance.AddScore(type.score); // Cập nhật điểm số
+            ScoreManager.Instance.AddScore(type.score); // Update score
             StartCoroutine(DestroyCoroutine());
         }
     }
-
 
     void Freeze()
     {
@@ -127,10 +141,10 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator PlayAttackSound()
     {
-        while (true) // Lặp vô hạn cho đến khi dừng
+        while (true) // Infinite loop until stopped
         {
             SoundManager.PlaySound(SoundType.ENEMYATTACK);
-            yield return new WaitForSeconds(0.7f); // Thay đổi thời gian chờ tùy theo nhu cầu
+            yield return new WaitForSeconds(0.7f); // Adjust delay as needed
         }
     }
 

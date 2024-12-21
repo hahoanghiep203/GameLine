@@ -44,17 +44,47 @@ public class EnemySpawner : MonoBehaviour
     public EnemyPrefabProb[] enemyPrefabs; // Thay đổi từ GameObject[] thành EnemyPrefabProb[]
     private List<GameObject> probList = new List<GameObject>();
 
+
+    public Timer timer;
+
+    private float coolDownTimer;
+    [SerializeField] private float coolDown = 12.0f;
+
+    private void Awake()
+    {
+        if (timer == null)
+        {
+            timer = FindObjectOfType<Timer>();
+        }
+    }
     private void Start()
     {
-        InvokeRepeating("SpawnEnemy", 5, 10);
+        InvokeRepeating("SpawnEnemy", 15, coolDown );
 
         foreach (EnemyPrefabProb prefabProb in enemyPrefabs)
         {
             for (int i = 0; i < prefabProb.probability; i++)
                 probList.Add(prefabProb.prefab);
         }
+
+        coolDownTimer = timer.speedManage;
     }
 
+    void Update()
+    {
+        if(coolDownTimer != timer.speedManage)
+        {
+            Debug.Log("");
+            UpdateCoolDown();
+            coolDownTimer = timer.speedManage;
+        }
+    }
+
+    void UpdateCoolDown()
+    {
+        CancelInvoke("SpawnEnemy");
+        InvokeRepeating("SpawnEnemy", 15, coolDown / timer.speedManage);
+    }
     void SpawnEnemy()
     {
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);

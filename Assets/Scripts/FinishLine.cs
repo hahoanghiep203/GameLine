@@ -29,7 +29,7 @@ public class FinishLine : MonoBehaviour
     public void ReplayGame()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void OpenMainMenu()
@@ -37,4 +37,11 @@ public class FinishLine : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
+
+    public void ReplayMenuTutor()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(2);
+    }
+    
 }

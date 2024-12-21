@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     private bool isPaused = false;
     private bool isGameWin = false;
     public GameObject winPanel;
+    public float speedManage = 1.0f;
 
     private bool isBlinking = false; // Biến kiểm tra trạng thái nhấp nháy
     private float blinkInterval = 0.5f; // Thời gian giữa các lần nhấp nháy
